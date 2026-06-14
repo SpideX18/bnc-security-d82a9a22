@@ -230,7 +230,7 @@ function Trust() {
         <div className="grid gap-px overflow-hidden rounded-3xl border border-gold/15 bg-gold/15 md:grid-cols-4">
           {stats.map((s, i) => (
             <Reveal key={i} delay={i * 0.1} className="bg-background p-10 text-center">
-              <div className="font-display text-5xl font-medium text-gold-gradient lg:text-6xl">
+              <div className={`font-display font-medium text-gold-gradient inline-block ${s.text ? "text-4xl md:text-5xl lg:text-5xl" : "text-5xl lg:text-6xl"}`}>
                 {s.text ? s.text : <><Counter to={s.value!} suffix={s.suffix} /></>}
               </div>
               <div className="mt-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">{s.label}</div>
