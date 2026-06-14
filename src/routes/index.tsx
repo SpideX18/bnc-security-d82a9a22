@@ -227,13 +227,13 @@ function Trust() {
   return (
     <section className="section-pad relative">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="grid gap-px overflow-hidden rounded-3xl border border-gold/15 bg-gold/15 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-gold/15 bg-gold/15 md:grid-cols-4">
           {stats.map((s, i) => (
-            <Reveal key={i} delay={i * 0.1} className="bg-background p-10 text-center">
-              <div className={`font-display font-medium text-gold-gradient inline-block ${s.text ? "text-4xl md:text-5xl lg:text-5xl" : "text-5xl lg:text-6xl"}`}>
+            <Reveal key={i} delay={i * 0.1} className="bg-background p-6 text-center sm:p-10">
+              <div className={`font-display font-medium text-gold-gradient inline-block ${s.text ? "text-2xl sm:text-4xl md:text-5xl lg:text-5xl" : "text-3xl sm:text-5xl lg:text-6xl"}`}>
                 {s.text ? s.text : <><Counter to={s.value!} suffix={s.suffix} /></>}
               </div>
-              <div className="mt-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">{s.label}</div>
+              <div className="mt-3 text-[0.6rem] uppercase tracking-[0.25em] text-muted-foreground sm:text-xs sm:tracking-[0.3em]">{s.label}</div>
             </Reveal>
           ))}
         </div>
@@ -282,13 +282,13 @@ function About() {
             </p>
           </Reveal>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+          <div className="mt-10 grid grid-cols-2 gap-4">
             {features.map((f, i) => (
               <Reveal key={f.title} delay={i * 0.08}>
-                <div className="glass-card group h-full rounded-2xl p-6 transition-all hover:border-gold/50 hover:-translate-y-1">
+                <div className="glass-card group h-full rounded-2xl p-4 transition-all hover:border-gold/50 hover:-translate-y-1 sm:p-6">
                   <f.icon className="h-6 w-6 text-gold" strokeWidth={1.4} />
-                  <div className="mt-4 font-display text-lg">{f.title}</div>
-                  <div className="mt-1 text-sm text-muted-foreground">{f.text}</div>
+                  <div className="mt-4 font-display text-base sm:text-lg">{f.title}</div>
+                  <div className="mt-1 text-xs text-muted-foreground sm:text-sm">{f.text}</div>
                 </div>
               </Reveal>
             ))}
@@ -351,15 +351,15 @@ function Strengths() {
             Capabilities forged from <span className="text-gold-gradient italic">decades of service</span>.
           </h2>
         </Reveal>
-        <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
           {items.map((s, i) => (
             <Reveal key={s.label} delay={(i % 4) * 0.06}>
               <motion.div whileHover={{ y: -8 }} transition={{ duration: 0.3 }}
-                className="glass-card group h-full rounded-2xl p-8 text-center transition-all hover:border-gold/50">
-                <div className="mx-auto grid h-14 w-14 place-items-center rounded-full border border-gold/30 bg-gold/5 transition-all group-hover:bg-gold/10">
+                className="glass-card group h-full rounded-2xl p-5 text-center transition-all hover:border-gold/50 sm:p-8">
+                <div className="mx-auto grid h-12 w-12 place-items-center rounded-full border border-gold/30 bg-gold/5 transition-all group-hover:bg-gold/10 sm:h-14 sm:w-14">
                   <s.icon className="h-6 w-6 text-gold" strokeWidth={1.4} />
                 </div>
-                <div className="mt-5 font-display text-base text-foreground">{s.label}</div>
+                <div className="mt-4 font-display text-sm text-foreground sm:mt-5 sm:text-base">{s.label}</div>
               </motion.div>
             </Reveal>
           ))}
@@ -396,28 +396,28 @@ function Services() {
           </p>
         </Reveal>
 
-        <div className="mt-16 grid auto-rows-[minmax(280px,auto)] gap-5 lg:grid-cols-4">
+        <div className="mt-16 grid grid-cols-2 auto-rows-[minmax(220px,auto)] gap-4 sm:gap-5 lg:auto-rows-[minmax(280px,auto)] lg:grid-cols-4">
           {services.map((s, i) => (
-            <Reveal key={s.title} delay={(i % 3) * 0.08} className={s.span ?? ""}>
+            <Reveal key={s.title} delay={(i % 3) * 0.08} className={s.span ? `col-span-2 ${s.span}` : ""}>
               <motion.a
                 href="#contact"
                 whileHover={{ y: -6 }}
                 transition={{ duration: 0.4 }}
                 className={`group relative block h-full overflow-hidden rounded-3xl border border-gold/15 ${
-                  s.span ? "min-h-[580px]" : "min-h-[300px]"
+                  s.span ? "min-h-[360px] lg:min-h-[580px]" : "min-h-[240px] sm:min-h-[300px]"
                 }`}
               >
                 <img src={s.img} alt={s.title} loading="lazy"
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.4s] group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/10" />
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-gold/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                <div className="relative flex h-full flex-col justify-end p-8">
-                  <div className="mb-4 grid h-12 w-12 place-items-center rounded-full border border-gold/30 bg-background/40 backdrop-blur">
+                <div className="relative flex h-full flex-col justify-end p-5 sm:p-8">
+                  <div className="mb-3 grid h-10 w-10 place-items-center rounded-full border border-gold/30 bg-background/40 backdrop-blur sm:mb-4 sm:h-12 sm:w-12">
                     <s.icon className="h-5 w-5 text-gold" strokeWidth={1.4} />
                   </div>
-                  <h3 className="font-display text-2xl font-medium text-foreground lg:text-3xl">{s.title}</h3>
-                  <p className="mt-3 max-w-md text-sm text-muted-foreground">{s.text}</p>
-                  <div className="mt-5 inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-gold opacity-90 transition-all group-hover:gap-3">
+                  <h3 className="font-display text-lg font-medium text-foreground sm:text-2xl lg:text-3xl">{s.title}</h3>
+                  <p className="mt-2 max-w-md text-xs text-muted-foreground sm:mt-3 sm:text-sm">{s.text}</p>
+                  <div className="mt-4 inline-flex items-center gap-2 text-[0.65rem] uppercase tracking-[0.25em] text-gold opacity-90 transition-all group-hover:gap-3 sm:mt-5 sm:text-xs sm:tracking-[0.3em]">
                     Read More <ArrowUpRight className="h-3.5 w-3.5" />
                   </div>
                 </div>
@@ -451,18 +451,18 @@ function Industries() {
             Trusted across <span className="text-gold-gradient italic">every demanding sector</span>.
           </h2>
         </Reveal>
-        <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-3">
           {items.map((it, i) => (
             <Reveal key={it.label} delay={(i % 3) * 0.08}>
               <motion.div whileHover={{ y: -6 }} transition={{ duration: 0.4 }}
                 className={`group relative overflow-hidden rounded-3xl border border-gold/15 ${i % 4 === 1 ? "lg:translate-y-8" : ""}`}>
-                <div className="relative h-64">
+                <div className="relative h-44 sm:h-64">
                   <img src={it.img} alt={it.label} loading="lazy"
                     className="h-full w-full object-cover opacity-60 transition-all duration-700 group-hover:scale-110 group-hover:opacity-80" />
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/20" />
-                  <div className="absolute inset-0 flex flex-col items-start justify-end p-8">
-                    <it.icon className="h-8 w-8 text-gold" strokeWidth={1.3} />
-                    <div className="mt-4 font-display text-2xl text-foreground">{it.label}</div>
+                  <div className="absolute inset-0 flex flex-col items-start justify-end p-5 sm:p-8">
+                    <it.icon className="h-6 w-6 text-gold sm:h-8 sm:w-8" strokeWidth={1.3} />
+                    <div className="mt-3 font-display text-base text-foreground sm:mt-4 sm:text-2xl">{it.label}</div>
                   </div>
                 </div>
               </motion.div>
@@ -498,15 +498,15 @@ function WhyUs() {
             Twelve reasons the world's most discerning clients <span className="text-gold-gradient italic">trust us</span>.
           </h2>
         </Reveal>
-        <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
           {items.map((w, i) => (
             <Reveal key={w.t} delay={(i % 3) * 0.06}>
               <motion.div whileHover={{ x: 6 }} transition={{ duration: 0.3 }}
-                className="glass-card flex items-center gap-5 rounded-2xl p-6 transition-all hover:border-gold/50">
-                <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-gold/30 bg-gold/5">
+                className="glass-card flex flex-col items-start gap-3 rounded-2xl p-4 transition-all hover:border-gold/50 sm:flex-row sm:items-center sm:gap-5 sm:p-6">
+                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-gold/30 bg-gold/5 sm:h-12 sm:w-12">
                   <w.icon className="h-5 w-5 text-gold" strokeWidth={1.4} />
                 </div>
-                <div className="font-display text-lg">{w.t}</div>
+                <div className="font-display text-sm sm:text-lg">{w.t}</div>
               </motion.div>
             </Reveal>
           ))}
